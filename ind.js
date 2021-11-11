@@ -53,4 +53,9 @@ function timerCycle() {
 
 function resetTimer() {
     timer.innerHTML = '00:00:00';
+     hr = 0;
+ min = 0;
+ sec = 0;
+ stoptime= true
+
 }
