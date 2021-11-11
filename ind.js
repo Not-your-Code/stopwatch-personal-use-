@@ -1,61 +1,79 @@
-const timer = document.getElementById('stopwatch');
+var msec = 0,
+  sec = 1,
+  min = 1,
+  hour = 1,
+  timerOn = 0;
+var msecVar, secVar, minVar, hourVar;
 
-var hr = 0;
-var min = 0;
-var sec = 0;
-var stoptime = true;
-
-function startTimer() {
-  if (stoptime == true) {
-        stoptime = false;
-        timerCycle();
-    }
-}
-function stopTimer() {
-  if (stoptime == false) {
-    stoptime = true;
+function setMSec() {
+  if (msec < 10) {
+    document.getElementById("msec").innerHTML = "0" + msec;
+  } else {
+    document.getElementById("msec").innerHTML = msec;
+  }
+  msec = msec + 1;
+  msecVar = setTimeout(setMSec, 100);
+  if (msec >= 10) {
+    setSec();
+    msec = 0;
   }
 }
 
-function timerCycle() {
-    if (stoptime == false) {
-    sec = parseInt(sec);
-    min = parseInt(min);
-    hr = parseInt(hr);
+function setSec() {
+  if (sec >= 60) {
+    setMin();
+    sec = 0;
+  }
+  if (sec < 10) {
+    document.getElementById("sec").innerHTML = "0" + sec;
+  } else {
+    document.getElementById("sec").innerHTML = sec;
+  }sec = sec + 1;
+}
 
-    sec = sec + 1;
+function setMin() {
+  if (min >= 60) {
+    setHour();
+    min = 0;
+  }
+  if (min < 10) {
+    document.getElementById("min").innerHTML = "0" + min;
+  } else {
+    document.getElementById("min").innerHTML = min;
+  }
+  min = min + 1;
+}
+function setHour() {
+  if (hour < 10) {
+    document.getElementById("hour").innerHTML = "0" + hour;
+  } else {
+    document.getElementById("hour").innerHTML = hour;
+  }
+  hour = hour + 1;
+}
 
-    if (sec == 60) {
-      min = min + 1;
-      sec = 0;
-    }
-    if (min == 60) {
-      hr = hr + 1;
-      min = 0;
-      sec = 0;
-    }
-
-    if (sec < 10 || sec == 0) {
-      sec = '0' + sec;
-    }
-    if (min < 10 || min == 0) {
-      min = '0' + min;
-    }
-    if (hr < 10 || hr == 0) {
-      hr = '0' + hr;
-    }
-
-    timer.innerHTML = hr + ':' + min + ':' + sec;
-
-    setTimeout("timerCycle()", 1000);
+function start() {
+  if (!timerOn) {
+    timerOn = 1;
+    setMSec();
   }
 }
 
-function resetTimer() {
-    timer.innerHTML = '00:00:00';
-     hr = 0;
- min = 0;
- sec = 0;
- stoptime= true
+function stop() {
+  clearTimeout(msecVar);
+  timerOn = 0;
+}
+function reset(){
+  clearTimeout(msecVar);
+  timerOn = 0;
+  document.getElementById("hour").innerHTML = "00"
+  document.getElementById("min").innerHTML = "00"
+  document.getElementById("sec").innerHTML = "00"
+  document.getElementById("msec").innerHTML = "00" 
+  msec = 0
+  sec = 1
+  min = 1
+  hour = 1
+
 
 }

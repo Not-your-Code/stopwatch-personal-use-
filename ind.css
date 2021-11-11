@@ -1,43 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Kumbh+Sans:wght@700&family=Mochiy+Pop+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600&family=Josefin+Sans:ital,wght@1,500&family=Kumbh+Sans:wght@700&family=Mochiy+Pop+One&display=swap');
 body {
-    background: #202020;
-    color: white;
-}
-button {
-    width: 100px;
-    height: 30px;
-    border-style: none;
-    border: 1px solid white;
-    border-radius: 20px;
-    background: transparent;
-    transition: .3s linear;
-    background: #202020;
-    color: white;
-    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+  }
+  
+  body * {
+    border-radius: 10px;
     outline: none;
-}
-button:hover{
-    background-color: white;
-    color:#202020;
-    transition: .5s linear;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 250px;
+      flex-direction: column;
+
+    }
+    .display{ 
+     color: white;
+     display: flex;
+    
+     width: 440px;
+     height: 120px;
+     justify-content: center;
+     align-items: center;
+     font-size: 80px;
+     font-weight: bold;
+     font-family: 'Poppins', sans-serif;
+    }
+  body{
+ background-color: #202020;
 }
 
-#stopwatch {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 100px;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -55%);
+.btns button{
+    width: 160px;
+    margin-top: 40px;
+    height: 40px;
+    border-style: none;
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    cursor: pointer;
+    color: white;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    transition: .2s linear;
+    margin-right: 10px ;
+
 }
-#buttons {
-    position: absolute;
-    top: 55%;
-    left: 48.4%;
-    transform: translate(-51.6%, -45%);
+
+
+
+button:hover{
+    background: white;
+    color: #202020;
+    transition: .2s linear;
 }
-#buttons li {
-    display: inline;
-    padding-left: 10px;
-}
+
+  #hour::after,
+  #min::after,
+  #sec::after {
+    content: ": ";
+  }
